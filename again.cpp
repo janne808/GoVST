@@ -115,13 +115,15 @@ void AGain::processReplacing (float** inputs, float** outputs, VstInt32 sampleFr
     float* out1 = outputs[0];
     float* out2 = outputs[1];
 
-    while (--sampleFrames >= 0)
-    {
-        //(*out1++) = (*in1++) * fGain;
-        //(*out2++) = (*in2++) * fGain;
-        (*out1++) = (float)Process((GoFloat64)(fGain),(GoFloat64)(*in1++));
-        (*out2++) = (float)Process((GoFloat64)(fGain),(GoFloat64)(*in1++));
-    }
+    ProcessReplacing((GoFloat32*)in1, (GoFloat32*)in2, (GoFloat32*)out1, (GoFloat32*)out2, (GoInt32)sampleFrames, (GoFloat32)fGain);
+    
+    //while (--sampleFrames >= 0)
+    //{
+    //    //(*out1++) = (*in1++) * fGain;
+    //    //(*out2++) = (*in2++) * fGain;
+    //    (*out1++) = 0;
+    //    (*out2++) = 0;
+    //}
 }
 
 //-----------------------------------------------------------------------------------------
@@ -133,11 +135,13 @@ void AGain::processDoubleReplacing (double** inputs, double** outputs, VstInt32 
     double* out2 = outputs[1];
     double dGain = fGain;
 
-    while (--sampleFrames >= 0)
-    {
-        //(*out1++) = (*in1++) * dGain;
-        //(*out2++) = (*in2++) * dGain;
-        (*out1++) = (double)Process((GoFloat64)(dGain),(GoFloat64)(*in1++));
-        (*out2++) = (double)Process((GoFloat64)(dGain),(GoFloat64)(*in1++));
-    }
+    ProcessDoubleReplacing((GoFloat64*)in1, (GoFloat64*)in2, (GoFloat64*)out1, (GoFloat64*)out2, (GoInt32)sampleFrames, (GoFloat64)dGain);
+    
+    //while (--sampleFrames >= 0)
+    //{
+    //    //(*out1++) = (*in1++) * dGain;
+    //    //(*out2++) = (*in2++) * dGain;
+    //    (*out1++) = (double)Process((GoFloat64)(dGain),(GoFloat64)(*in1++));
+    //    (*out2++) = (double)Process((GoFloat64)(dGain),(GoFloat64)(*in1++));
+    //}
 }
