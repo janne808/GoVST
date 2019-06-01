@@ -4,6 +4,8 @@
 *.dll
 *.so
 *.dylib
+*~
+vstsdk2.4/
 
 # Test binary, build with `go test -c`
 *.test
